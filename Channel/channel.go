@@ -7,10 +7,9 @@ import (
 
 func main() {
 	chan10()
-	time.Sleep(5)
 
 	chan100()
-	time.Sleep(5)
+	time.Sleep(100)
 
 }
 
