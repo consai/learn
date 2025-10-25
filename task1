@@ -1,0 +1,16 @@
+
+136. 只出现一次的数字
+func singleNumber(nums []int) int {
+    if len(nums) == 1{
+        return nums[0]
+    }
+    sort.Ints(nums)
+    for i := 1; i <len(nums); i++{
+        if nums[i] == nums[i-1]{
+            i++
+        }else{
+            return nums[i-1]
+        }
+    }
+    return nums[len(nums)-1]
+}
