@@ -30,29 +30,29 @@ func main() {
 	//migrate the schema
 	db.AutoMigrate(&Student{})
 
-	// err = gorm.G[Student](db).Create(ctx, &Student{Name: "张三", Age: 20, Grade: "三年级"})
-	// if err != nil {
-	// 	fmt.Printf("Create err:\n%+v\n", err)
-	// }
+	err = gorm.G[Student](db).Create(ctx, &Student{Name: "张三", Age: 20, Grade: "三年级"})
+	if err != nil {
+		fmt.Printf("Create err:\n%+v\n", err)
+	}
 
-	// products, err := gorm.G[Student](db).Where("age > ?", 18).Find(ctx)
-	// if err == nil {
-	// 	fmt.Printf("product:\n%+v\n", products)
-	// } else {
-	// 	fmt.Printf("select err:\n%+v\n", err)
-	// }
+	products, err := gorm.G[Student](db).Where("age > ?", 18).Find(ctx)
+	if err == nil {
+		fmt.Printf("product:\n%+v\n", products)
+	} else {
+		fmt.Printf("select err:\n%+v\n", err)
+	}
 
-	// rows, err := gorm.G[Student](db).Where("name = ?", "张三").Update(ctx, "grade", "四年级")
-	// if err != nil {
-	// 	fmt.Printf("Update err:\n%+v\n", err)
-	// } else {
-	// 	fmt.Printf("rows:\n%+v\n", rows)
-	// }
+	rows, err := gorm.G[Student](db).Where("name = ?", "张三").Update(ctx, "grade", "四年级")
+	if err != nil {
+		fmt.Printf("Update err:\n%+v\n", err)
+	} else {
+		fmt.Printf("rows:\n%+v\n", rows)
+	}
 
-	// _, err = gorm.G[Student](db).Where("age < ?", 15).Delete(ctx)
-	// if err != nil {
-	// 	fmt.Printf("Delete err:\n%+v\n", err)
-	// }
+	_, err = gorm.G[Student](db).Where("age < ?", 15).Delete(ctx)
+	if err != nil {
+		fmt.Printf("Delete err:\n%+v\n", err)
+	}
 
 	err = Trans(db, 1, 2, 100)
 
